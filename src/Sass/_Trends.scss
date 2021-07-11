@@ -1,0 +1,95 @@
+$dark: #000000;
+$whitish: #fafafa;
+$pinkish: #ff0195;
+
+@mixin desktop {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+.trend_page {
+  width: 100%;
+  margin-top: 3em;
+  .trend_label {
+    padding-left: 1em;
+    h1 {
+      font-size: 20px;
+    }
+  }
+
+  .trend_items {
+    width: 100%;
+    height: 174px;
+    margin-top: 1em;
+    display: flex;
+    gap: 1em;
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    @include desktop() {
+      height: 300px;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .trend_item {
+    width: 150px;
+    height: 174px;
+
+    @include desktop() {
+      width: 276px;
+      height: 300px;
+    }
+
+    .trend_img {
+      width: 150px;
+      height: 150px;
+      position: relative;
+
+      @include desktop() {
+        width: 276px;
+        height: 276px;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .item_price {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 0.3em;
+        font-size: 12px;
+        text-align: center;
+        color: $whitish;
+        background-color: $pinkish;
+      }
+    }
+
+    .item_button {
+      width: 100%;
+      height: 24px;
+      background-color: $dark;
+
+      button {
+        font-size: 12px;
+        width: 100%;
+        height: 100%;
+        color: $whitish;
+        border: none;
+        background-color: $dark;
+        cursor: pointer;
+        transition: background-color 300ms;
+        &:hover {
+          background-color: lighten($dark, 30%);
+        }
+      }
+    }
+  }
+}
