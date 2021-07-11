@@ -13,8 +13,6 @@ const OrderButton = ({ setItems }) => {
             ".nav .nav_right p:nth-child(3)::after"
           );
           countEle.content = "'0'";
-
-          alert("Order placed!");
         }}
       >
         ORDER NOW
