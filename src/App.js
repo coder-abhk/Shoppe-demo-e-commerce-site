@@ -4,7 +4,6 @@ import Cart from "./components/Cart";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 const App = () => {
-  // const [isDisplay, setIsDisplay] = useState(true);
   return (
     <BrowserRouter>
       <div className="App">

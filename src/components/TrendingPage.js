@@ -1,28 +1,18 @@
-import { useState } from "react";
 import { items } from "./items/items";
 import { CSSRulePlugin } from "gsap/all";
+import { connect } from "react-redux";
+import { addItem } from "../store/actions/actions";
 
-const TrendingPage = () => {
-  const [cartItems, setCartItems] = useState([]);
-
+const TrendingPage = ({ cartItems, dispatch }) => {
   const countEle = CSSRulePlugin.getRule(
     ".nav .nav_right p:nth-child(3)::after"
   );
 
-  const addItemHandler = (id, price, name, quantity) => {
-    setCartItems([
-      ...cartItems,
-      {
-        id: id,
-        price: price,
-        name: name,
-        quantity: quantity,
-      },
-    ]);
+  const addItemHandler = (id, name, price, img) => {
+    dispatch(addItem(id, name, price, img));
   };
-  localStorage.setItem("items", JSON.stringify(cartItems));
 
-  countEle.content = `'${JSON.parse(localStorage.getItem("items")).length}'`;
+  countEle.content = `'${cartItems ? cartItems.length : 0}'`;
 
   const trends = () => {
     return items.map((item) => (
@@ -35,7 +25,7 @@ const TrendingPage = () => {
           <button
             type="button"
             onClick={(e) => {
-              addItemHandler(item.id, item.price, item.item_name, 1);
+              addItemHandler(item.id, item.item_name, item.price, item.img);
               e.preventDefault();
             }}
           >
@@ -56,4 +46,10 @@ const TrendingPage = () => {
   );
 };
 
-export default TrendingPage;
+const mapStateToProps = (state) => {
+  return {
+    cartItems: state.cartItems,
+  };
+};
+
+export default connect(mapStateToProps)(TrendingPage);

@@ -1,22 +1,7 @@
-import { CSSRulePlugin } from "gsap/all";
-
-const OrderButton = ({ setItems }) => {
+const OrderButton = () => {
   return (
     <div className="order_button_wrapper">
-      <button
-        type="button"
-        onClick={() => {
-          setItems("");
-          localStorage.clear();
-
-          const countEle = CSSRulePlugin.getRule(
-            ".nav .nav_right p:nth-child(3)::after"
-          );
-          countEle.content = "'0'";
-        }}
-      >
-        ORDER NOW
-      </button>
+      <button type="button">ORDER NOW</button>
     </div>
   );
 };

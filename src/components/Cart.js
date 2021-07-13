@@ -1,42 +1,49 @@
-import { useEffect, useState } from "react";
 import OrderButton from "./OrderButton";
+import { connect } from "react-redux";
+import { getTotal } from "../store/actions/actions";
+import { useEffect } from "react";
 
-const Cart = () => {
-  const [items, setItems] = useState(0);
+const Cart = ({ items, total, dispatch }) => {
   useEffect(() => {
-    setItems(JSON.parse(localStorage.getItem("items")));
-  }, []);
+    let amt = 0;
 
-  let TOTAL = 0;
-  if (items) {
-    items.forEach((item) => {
-      TOTAL += item.price;
-    });
-  } else {
-    TOTAL = 0;
-  }
+    items.map((item) => (amt += item.price));
+    dispatch(getTotal(amt));
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="cart_wrapper">
       <div className="cart_inner">
-        {items
-          ? items.map((item, i) => (
-              <div className="cart_item" key={i}>
-                <div className="item_row">
-                  <h5>{i}</h5>
-                  <h5>{item.name}</h5>
-                  <p>{item.price}</p>
-                </div>
+        {items ? (
+          items.map((item, i) => (
+            <div className="cart_item" key={i}>
+              <div className="img_wrapper">
+                <img src={item.img} alt="" />
               </div>
-            ))
-          : "No items in cart."}
+              <div className="item_row">
+                <h5>{item.item_name}</h5>
+                <p>Rs. {item.price}</p>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>"No items in cart."</p>
+        )}
       </div>
       <div className="total">
-        <strong>TOTAL</strong>- Rs. {TOTAL}
+        <strong>TOTAL</strong>- Rs. {total}
       </div>
-      <OrderButton setItems={setItems} />
+      <OrderButton />
     </div>
   );
 };
 
-export default Cart;
+const mapStateToProps = (state) => {
+  return {
+    items: state.cartItems,
+    total: state.total,
+  };
+};
+
+export default connect(mapStateToProps)(Cart);
