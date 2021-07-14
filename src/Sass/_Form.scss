@@ -1,8 +1,14 @@
 $accent: #fce9c9;
 $dark: #282828;
 
+@mixin desktop {
+  @media (min-width: 571px) {
+    @content;
+  }
+}
+
 form {
-  width: 400px;
+  width: 365px;
   height: auto;
   margin: 3em auto;
   padding: 1em;
@@ -10,6 +16,10 @@ form {
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  @include desktop() {
+    width: 400px;
+  }
 
   input {
     padding: 6px 5px;
