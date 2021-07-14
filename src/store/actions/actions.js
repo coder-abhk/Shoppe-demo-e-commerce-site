@@ -1,4 +1,4 @@
-import { ADD_ITEM, REMOVE_ITEM } from "./actionTypes";
+import { ADD_ITEM, REMOVE_ITEM, ADD_USER } from "./actionTypes";
 
 const addItem = (id, item_name, price, img) => {
   return {
@@ -19,4 +19,11 @@ const removeItem = (id) => {
   };
 };
 
-export { addItem, removeItem };
+const addUser = (user) => {
+  return {
+    type: ADD_USER,
+    user: user,
+  };
+};
+
+export { addItem, removeItem, addUser };

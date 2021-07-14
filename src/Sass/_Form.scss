@@ -1,0 +1,35 @@
+$accent: #fce9c9;
+$dark: #282828;
+
+form {
+  width: 400px;
+  height: auto;
+  margin: 3em auto;
+  padding: 1em;
+  border: 1px solid $accent;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  input {
+    padding: 6px 5px;
+    margin: 0.75em 0;
+  }
+
+  button {
+    padding: 6px 12px;
+    margin-top: 0.75em;
+    color: #fafafa;
+    border: none;
+    border-radius: 2px;
+    background-color: $dark;
+    &:hover {
+      cursor: pointer;
+      background-color: lighten($dark, 50%);
+    }
+  }
+  p.mT {
+    color: $dark;
+    margin-top: 0.35em;
+  }
+}

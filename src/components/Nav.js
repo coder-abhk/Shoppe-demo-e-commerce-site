@@ -18,7 +18,9 @@ const Nav = () => {
           </Link>
         </p>
         <p>
-          <AccountCircleOutlinedIcon fontSize="small" />
+          <Link to="/user">
+            <AccountCircleOutlinedIcon fontSize="small" />
+          </Link>
         </p>
         <p>
           <Link to="/cart">

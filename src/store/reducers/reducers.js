@@ -1,9 +1,10 @@
 // actionTypes
-import { ADD_ITEM, REMOVE_ITEM } from "../actions/actionTypes";
+import { ADD_ITEM, REMOVE_ITEM, ADD_USER } from "../actions/actionTypes";
 
 // initial state
 const initialState = {
   cartItems: [],
+  user: "",
 };
 
 // get total
@@ -30,6 +31,11 @@ const reducers = (state = initialState, action) => {
       return {
         ...state,
         cartItems: newItems,
+      };
+    case ADD_USER:
+      return {
+        ...state,
+        user: action.user,
       };
 
     default:
