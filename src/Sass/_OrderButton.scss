@@ -12,8 +12,9 @@ $whitish: #fafafa;
     border-radius: 7px;
     background-color: $dark;
     transition: background-color 300ms;
+    cursor: pointer;
     &:hover {
-      background-color: lighten($dark, 50%);
+      background-color: lighten($dark, 40%);
     }
   }
 }

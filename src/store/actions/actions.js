@@ -1,4 +1,4 @@
-import { ADD_ITEM, REMOVE_ITEM, GET_SUBTOTAL } from "./actionTypes";
+import { ADD_ITEM, REMOVE_ITEM } from "./actionTypes";
 
 const addItem = (id, item_name, price, img) => {
   return {
@@ -19,11 +19,4 @@ const removeItem = (id) => {
   };
 };
 
-const getTotal = (total) => {
-  return {
-    type: GET_SUBTOTAL,
-    payload: total,
-  };
-};
-
-export { addItem, removeItem, getTotal };
+export { addItem, removeItem };

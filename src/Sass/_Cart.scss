@@ -48,6 +48,20 @@ $dark: #282828;
     }
   }
 }
+.remove_button {
+  color: #fafafa;
+  border-radius: 7px;
+  text-transform: uppercase;
+  border: 2px solid $accent;
+  background-color: $dark;
+  padding: 6px 12px;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.055);
+  cursor: pointer;
+  transition: background-color 300ms;
+  &:hover {
+    background-color: lighten($dark, 40%);
+  }
+}
 
 .item_row {
   display: flex;

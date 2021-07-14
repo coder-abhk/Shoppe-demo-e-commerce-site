@@ -12,7 +12,7 @@ const TrendingPage = ({ cartItems, dispatch }) => {
     dispatch(addItem(id, name, price, img));
   };
 
-  countEle.content = `'${cartItems ? cartItems.length : 0}'`;
+  countEle.content = `'${cartItems?.length}'`;
 
   const trends = () => {
     return items.map((item) => (
