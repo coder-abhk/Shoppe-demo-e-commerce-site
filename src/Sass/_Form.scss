@@ -7,6 +7,30 @@ $dark: #282828;
   }
 }
 
+.profile {
+  width: 365px;
+  height: auto;
+  margin: 3em auto;
+  padding: 1em;
+  border: 1px solid $accent;
+  @include desktop() {
+    width: 400px;
+  }
+
+  button {
+    padding: 6px 12px;
+    margin-top: 0.75em;
+    color: #fafafa;
+    border: none;
+    border-radius: 2px;
+    background-color: $dark;
+    &:hover {
+      cursor: pointer;
+      background-color: lighten($dark, 50%);
+    }
+  }
+}
+
 form {
   width: 365px;
   height: auto;

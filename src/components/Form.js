@@ -9,6 +9,11 @@ const Form = ({ user, dispatch }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const onUserLogOut = () => {
+    auth.signOut();
+    dispatch(addUser(null));
+  };
+
   const onCreateAccountHandler = (e) => {
     e.preventDefault();
     auth
@@ -30,33 +35,50 @@ const Form = ({ user, dispatch }) => {
 
   return (
     <div className="form">
-      <form>
-        <h5>Email</h5>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => {
-            e.preventDefault();
-            setEmail(e.target.value);
-          }}
-        />
-        <h5>Password</h5>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => {
-            e.preventDefault();
-            setPassword(e.target.value);
-          }}
-        />
-        <button type="submit" onClick={onSignInHandler}>
-          Sign in
-        </button>
-        <p className="mT">Don't have an account?</p>
-        <button type="submit" onClick={onCreateAccountHandler}>
-          Create an account
-        </button>
-      </form>
+      {user ? (
+        <div className="profile">
+          <p>
+            User: <em>{user}</em>
+          </p>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              onUserLogOut();
+            }}
+          >
+            LogOut
+          </button>
+        </div>
+      ) : (
+        <form>
+          <h5>Email</h5>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => {
+              e.preventDefault();
+              setEmail(e.target.value);
+            }}
+          />
+          <h5>Password</h5>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => {
+              e.preventDefault();
+              setPassword(e.target.value);
+            }}
+          />
+          <button type="submit" onClick={onSignInHandler}>
+            Sign in
+          </button>
+          <p className="mT">Don't have an account?</p>
+          <button type="submit" onClick={onCreateAccountHandler}>
+            Create an account
+          </button>
+        </form>
+      )}
     </div>
   );
 };

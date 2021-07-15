@@ -1,0 +1,16 @@
+$accent: #fce9c9;
+$whitish: #fafafa;
+$dark: #000000;
+
+.page_not_found {
+  color: $dark;
+  width: 75%;
+  padding: 1em;
+  border-radius: 7px;
+  margin: 3rem auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  background-color: $accent;
+}
